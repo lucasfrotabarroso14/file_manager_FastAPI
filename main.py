@@ -2,6 +2,10 @@ import uvicorn
 from fastapi import FastAPI
 
 from app.microservices.organization_microservice.organization_view import router
+import logging
+
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 app = FastAPI()
 

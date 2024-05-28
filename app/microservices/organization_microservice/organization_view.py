@@ -10,4 +10,5 @@ router = APIRouter()
 async def get_all_organizations(DB_session : Session = Depends(get_session)):
     repository = OrganizationRepository(DB_session)
     organizations = repository.get_all_organizations()
+
     return organizations
