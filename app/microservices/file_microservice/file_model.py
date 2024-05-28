@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
-from app.shared.config.base import Base
+from app.database import Base
 
 
 class File(Base):
@@ -14,3 +14,4 @@ class File(Base):
     user_id = Column(Integer, ForeignKey('Users.id'))
 
     owner = relationship("User", back_populates="files")
+

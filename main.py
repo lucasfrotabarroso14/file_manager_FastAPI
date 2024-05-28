@@ -1,10 +1,13 @@
 import uvicorn
 from fastapi import FastAPI
 
+from app.microservices.organization_microservice.organization_view import router
+
 app = FastAPI()
 
-async def read_root():
-    return {"Hello": "World"}
+
+
+app.include_router(router)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -2,8 +2,10 @@ from logging.config import fileConfig
 from dotenv import load_dotenv
 from sqlalchemy import engine_from_config, pool
 from alembic import context
-from app.shared.config.base import Base
+
 import os
+
+from app.database import Base
 
 # Import all models to ensure they are registered with Base
 

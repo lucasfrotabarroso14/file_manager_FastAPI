@@ -7,7 +7,7 @@ class OrganizationBase(BaseModel):
 class OrganizationCreate(OrganizationBase):
     pass
 
-class Organization(OrganizationBase):
+class OrganizationSchema(OrganizationBase):
     id: int
 
     class Config:
