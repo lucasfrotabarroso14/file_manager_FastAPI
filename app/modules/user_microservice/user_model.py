@@ -10,7 +10,7 @@ class User(Base):
     name = Column(String(100))
     email = Column(String(100))
     password = Column(String(255))
-    organization_id = Column(Integer, ForeignKey('organization.id'))
+    organization_id = Column(Integer, ForeignKey('Organizations.id'))
 
-    organization = relationship("organization", back_populates="users")
+    organization = relationship("Organization", back_populates="users")
     files = relationship("File", back_populates="owner")

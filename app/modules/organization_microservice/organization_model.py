@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from app.shared.config.base import Base
 
 
-class User(Base):
+class Organization(Base):
     __tablename__ = 'Organizations'
 
     id = Column(Integer, primary_key = True, autoincrement = True)
