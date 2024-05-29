@@ -6,8 +6,9 @@ from app.microservices.organization_microservice.organization_model import Organ
 from app.microservices.organization_microservice.organization_schema import OrganizationSchema
 from app.microservices.organization_microservice.organization_view import router
 from app.microservices.user_microservice.user_repository import UserRepository
-from app.microservices.user_microservice.user_schema import  UserSchema
+from app.microservices.user_microservice.user_schema import UserSchema, UserCreateSchema
 
+routerteste = APIRouter()
 
 async def get_all_users():
     try:
@@ -32,15 +33,20 @@ async def get_all_users():
             "result": str(e),
         }
 
-@router.post("/user", response_model=OrganizationSchema)
-async def create_user(user: UserSchema,db_session: Session = Depends(get_session)):
+@routerteste.post("/user", response_model=OrganizationSchema)
+async def create_new_user(user_data: UserCreateSchema, db: Session = Depends(get_session)):
     try:
-        user_repository = UserRepository(db_session)
-        new_user, status = user_repository.create_new_user_db(name=user.name, email=user.email,password=user.password,organization_id=user.organization_id)
+        repository = UserRepository(db)
+        user_id, status = repository.create_new_user_db(
+            name=user_data.name,
+            email=user_data.email,
+            password=user_data.password,
+            organization_id=user_data.organization_id
+        )
+
         if status:
-            return new_user
+            return {"id": user_id, "status": True, "status_code": 201}
         else:
             raise HTTPException(status_code=500, detail="Failed to create user")
-
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

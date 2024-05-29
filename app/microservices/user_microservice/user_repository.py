@@ -21,7 +21,7 @@ class UserRepository():
         except Exception as e:
             return str(e), False
 
-
+#corriigir abaixo (olhe no chat gpt no "comecar projeto fast api)"
     def create_new_user_db(self, name: str, email: str, password: str, organization_id : int):
         try:
 
