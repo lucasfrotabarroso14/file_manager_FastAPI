@@ -4,17 +4,17 @@ from pydantic import BaseModel
 
 
 
-class UserBase(BaseModel):
+class UserBaseSchema(BaseModel):
     name: str
     email: str
     password: str
     organization_id: Optional[int]
 
 
-class UserCreate(UserBase):
+class UserCreateSchema(UserBaseSchema):
     pass
 
-class User(UserBase):
+class UserSchema(UserBaseSchema):
     id : int
 
     class Config:
