@@ -11,7 +11,7 @@ class OrganizationRepository:
 
     def get_all_organizations(self):
         try:
-            organizations = self.DB_session.query(Organization).all
+            organizations = self.DB_session.query(Organization).all()
         except Exception as e:
             return str(e), False
         return organizations, True

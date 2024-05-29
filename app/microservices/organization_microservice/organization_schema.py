@@ -1,13 +1,13 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class OrganizationBase(BaseModel):
+class OrganizationBaseSchema(BaseModel):
     name: str
 
-class OrganizationCreate(OrganizationBase):
+class OrganizationCreateSchema(OrganizationBaseSchema):
     pass
 
-class OrganizationSchema(OrganizationBase):
+class OrganizationSchema(OrganizationBaseSchema):
     id: int
 
     class Config:
